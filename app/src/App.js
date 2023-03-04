@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DemographicForm from './components/DemographicForm';
-import NoteCard from './components/NoteCard'; {/* TEMPORARY LOCATION */}
+import ResultPage from './components/ResultPage';
 
 function App() {
 
@@ -30,24 +30,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-          <DemographicForm />
-          {/* ------------------------------ TEMPORARY LOCATION OF CARDS - TODO: move to notes page ---------------*/}
-          <div>
-            {notes.map((note) => (
-                <NoteCard 
-                    key={note.id} 
-                    note={note}
-                    complexity={Complexity}
-                    // editNote={editNote} // TODO - add edit function later
-                />
-            ))}
-          </div>
-          {/* ------------------------------ END ------------------------------------------------------------------*/}
-          {/* <Routes> */}
-            {/* <Route path="/">
-              
-            </Route> */}
-          {/* </Routes> */}
+        <Routes>
+          <Route exact path="/" element={<DemographicForm />} />
+          <Route exact path="/result" element={<ResultPage />} />
+        </Routes>
       </Router>
     </div>
   );
