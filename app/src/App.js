@@ -11,6 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import NoteCard from './components/NoteCard'; {/* TEMPORARY LOCATION */}
+
 const Input = styled(MuiInput)`
   width: 42px;
 `;
@@ -139,6 +141,28 @@ function SelectCountry() {
 }
 
 function App() {
+
+  // --------------- TEMPORARY LOCATION OF NOTES STATES + ENUMS ---------------------------------------------
+  const [notes, setNotes] = React.useState([
+    {
+        id: 1, // TODO: field must be unique
+        title: "Lorem",
+        content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
+        created_date: "March 2, 2023", // TODO convert to date-type
+        category: "Work"
+    },
+    {
+      id: 2, // TODO: field must be unique
+      title: "Ipsum",
+      content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
+      created_date: "March 1, 2023", // TODO convert to date-type
+      category: "Personal"
+    },
+  ]);
+
+  const Complexity = "Medium"; // TEMP
+  // --------------- END -------------------------------------------------------------------------------------
+
   return (
     <div className="App">
       <Box sx={{ width: 600, p: 8 }}>
@@ -152,6 +176,20 @@ function App() {
           <SelectCountry />
         </div>
       </Box>
+
+      {/* ------------------------------ TEMPORARY LOCATION OF CARDS - TODO: move to notes page ---------------*/}
+      <div>
+        {notes.map((note) => (
+            <NoteCard 
+                key={note.id} 
+                note={note}
+                complexity={Complexity}
+                // editNote={editNote} // TODO - add edit function later
+            />
+        ))}
+      </div>
+      {/* ------------------------------ END ------------------------------------------------------------------*/}
+
     </div>
   );
 }
