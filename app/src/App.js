@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from './components/NavBar';
 import DemographicForm from './components/DemographicForm';
 import ResultPage from './components/ResultPage';
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <Router>
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
