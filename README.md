@@ -2,6 +2,7 @@
 
 ```
 cd app
-npm install       # first time
+npm install
 npm start
 ```
+
