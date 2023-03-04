@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { BrowserRouter as Router } from "react-router-dom";
+import NavBar from './components/NavBar';
 import DemographicForm from './components/DemographicForm';
 import NoteCard from './components/NoteCard'; {/* TEMPORARY LOCATION */}
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar></NavBar>
       <Router>
           <DemographicForm />
           {/* ------------------------------ TEMPORARY LOCATION OF CARDS - TODO: move to notes page ---------------*/}
