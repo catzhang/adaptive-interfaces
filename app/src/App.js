@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import DemographicForm from './components/DemographicForm';
 import ResultPage from './components/ResultPage';
 
+
 function App() {
 
   // --------------- TEMPORARY LOCATION OF NOTES STATES + ENUMS ---------------------------------------------
@@ -23,9 +24,25 @@ function App() {
       created_date: "March 1, 2023", // TODO convert to date-type
       category: "Personal"
     },
+    {
+      id: 3, // TODO: field must be unique
+      title: "Lorem",
+      content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
+      created_date: "March 2, 2023", // TODO convert to date-type
+      category: "Work"
+    },
+    {
+      id: 4, // TODO: field must be unique
+      title: "Ipsum",
+      content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
+      created_date: "March 1, 2023", // TODO convert to date-type
+      category: "Personal"
+    },
   ]);
 
   const Complexity = "Medium"; // TEMP
+  const Hierarchy = "Flat"; // TEMP
+
   // --------------- END -------------------------------------------------------------------------------------
 
   return (
@@ -34,7 +51,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
-          <Route exact path="/result" element={<ResultPage />} />
+          <Route exact path="/result" element={<ResultPage notes={notes} complexity={Complexity} hierarchy={Hierarchy}/>} />
         </Routes>
       </Router>
     </div>
