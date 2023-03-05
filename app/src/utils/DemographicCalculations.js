@@ -1,9 +1,3 @@
-// const demographics = {
-//     age: ageValue,
-//     gender: genderValue,
-//     country: countryValue,
-//   };
-
 import COUNTRIES from "./COUNTRIES";
 
 const BUCKETS = {
