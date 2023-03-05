@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 import FlatLayout from '../FlatLayout';
 import MixedLayout from '../MixedLayout';
+import TreeLayout from '../TreeLayout';
 
 function ResultPage(props) {
   const { state } = useLocation();
@@ -13,7 +14,7 @@ function ResultPage(props) {
   if (hierarchy === "Mixed") {
     component = <MixedLayout notes={notes} complexity={complexity}/>;
   } else if (hierarchy === "Tree") {
-    <div/> // TODO
+    component = <TreeLayout notes={notes} complexity={complexity}/>;
   }
 
   return (

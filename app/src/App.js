@@ -40,8 +40,8 @@ function App() {
     },
   ]);
 
-  const Complexity = "Medium"; // TEMP
-  const Hierarchy = "Flat"; // TEMP
+  const Complexity = "High"; // TEMP
+  const Hierarchy = "Tree"; // TEMP
 
   // --------------- END -------------------------------------------------------------------------------------
 
