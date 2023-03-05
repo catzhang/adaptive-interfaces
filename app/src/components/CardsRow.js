@@ -3,8 +3,7 @@ import NoteCard from './NoteCard';
 
 
 export default function CardsRow(props) {
-    const notes = props.notes;
-    const complexity = props.complexity;
+    const { notes, complexity } = props;
 
     let leftMargin = '2%';
 

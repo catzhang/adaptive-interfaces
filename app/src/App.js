@@ -40,8 +40,8 @@ function App() {
     },
   ]);
 
-  const Complexity = "Low"; // TEMP
-  const layout = "Flat"; // TEMP
+  const Complexity = "Medium"; // TEMP
+  const Hierarchy = "Flat"; // TEMP
 
   // --------------- END -------------------------------------------------------------------------------------
 
@@ -51,7 +51,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
-          <Route exact path="/result" element={<ResultPage notes={notes} complexity={Complexity} layout={layout}/>} />
+          <Route exact path="/result" element={<ResultPage notes={notes} complexity={Complexity} hierarchy={Hierarchy}/>} />
         </Routes>
       </Router>
     </div>

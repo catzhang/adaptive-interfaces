@@ -3,8 +3,7 @@ import Typography from '@mui/material/Typography';
 import CardsRow from './CardsRow';
 
 export default function FlatLayout(props) {
-    const notes = props.notes;
-    const complexity = props.complexity;
+    const { notes, complexity } = props;
 
     let layoutStyle = {
         backgroundColor: 'white', 
