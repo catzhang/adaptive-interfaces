@@ -11,6 +11,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import COUNTRIES from '../../utils/COUNTRIES';
 
 const Input = styled(MuiInput)`
   width: 42px;
@@ -42,7 +43,7 @@ function DemographicForm() {
   };
 
   // COUNTRY INPUT STATE AND HOOKS
-  const [countryValue, setCountryValue] = React.useState('United States of America');
+  const [countryValue, setCountryValue] = React.useState(41);
   const handleCountryChange = (event) => {
     setCountryValue(event.target.value);
   };
@@ -131,9 +132,9 @@ function DemographicForm() {
               label="Country"
               onChange={handleCountryChange}
             >
-              <MenuItem value={10}>United States of America</MenuItem>
-              <MenuItem value={20}>Canada</MenuItem>
-              <MenuItem value={30}>China</MenuItem>
+              {COUNTRIES.map((countryObj, i) => {
+                return <MenuItem key={i} value={i}>{countryObj.country}</MenuItem>;
+              })}
             </Select>
           </FormControl>
         </div>
