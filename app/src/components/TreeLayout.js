@@ -54,8 +54,7 @@ export default function CustomizedAccordions(props) {
       setExpanded(newExpanded ? panel : false);
     };
 
-    const notes = props.notes;
-    const complexity = props.complexity;
+    const {notes, complexity} = props;
 
     let layoutStyle = {
         width: 1160, 
@@ -88,8 +87,8 @@ export default function CustomizedAccordions(props) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            {notes?.map((note) => (
-                                <Button size="small">{note.title}</Button> // TODO: onClick
+                            {notes?.map((note, index) => (
+                                <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
                             ))}
                         </div>
                     </AccordionDetails>
@@ -100,8 +99,8 @@ export default function CustomizedAccordions(props) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
-                            {notes?.map((note) => (
-                                <Button size="small">{note.title}</Button> // TODO: onClick
+                            {notes?.map((note, index) => (
+                                <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
                             ))}
                         </div>
                     </AccordionDetails>

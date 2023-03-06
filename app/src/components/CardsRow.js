@@ -16,9 +16,8 @@ export default function CardsRow(props) {
     return (
         <div style={{display: 'flex', flexDirection: 'row'}}>
             {notes?.map((note) => (
-                <div style={{marginLeft: leftMargin}}>
+                <div key={note.id} style={{marginLeft: leftMargin}}>
                     <NoteCard 
-                        key={note.id} 
                         note={note}
                         complexity={complexity}
                         // editNote={editNote} // TODO - add edit function later
