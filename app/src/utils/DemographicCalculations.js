@@ -37,3 +37,14 @@ export const calculateComplexityBucket = (age, countryIndex) => {
         return "High";
     }
 }
+
+export const calculateHierarchy = (countryIndex) => {
+    const PDI = COUNTRIES[countryIndex].hierarchy;
+    if (PDI <= 39) {
+        return "Tree";
+    } else if (PDI <= 68) {
+        return "Mixed";
+    } else {
+        return "Flat";
+    }
+}
