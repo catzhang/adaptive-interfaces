@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar notes={notes} setNotes={setNotes} />
       <Router>
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
