@@ -25,12 +25,7 @@ export default function NavBar(props) {
   const handleClose = () => setOpen(false);
 
   const handleSubmit = () => {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    const d = new Date();
-    let created_date = monthNames[d.getMonth()] + ' ' + d.getDay() + ', ' + d.getFullYear();
+    const created_date = new Date();
     let note = { id : notes.length + 1, title, content, created_date, category };
     let copy = [...notes, note];
     console.log(copy);

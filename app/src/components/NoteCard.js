@@ -5,12 +5,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { formatDate } from '../utils/utils';
 
 export default function NoteCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
+  const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
     position: "relative",
@@ -59,7 +60,7 @@ export default function NoteCard(props) {
       <Card sx={{ minWidth: 250 }} style={cardStyle}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {created_date}
+            {created_date_formatted}
           </Typography>
           <Typography variant="h5" component="div">
             {title}
@@ -78,7 +79,7 @@ export default function NoteCard(props) {
       <Card sx={{ minWidth: 250 }} style={cardStyle}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {created_date}
+            {created_date_formatted}
           </Typography>
           <Typography variant="h5" component="div">
             {title}

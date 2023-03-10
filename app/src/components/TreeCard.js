@@ -4,12 +4,13 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { formatDate } from '../utils/utils';
 
 export default function TreeCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
+  const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
     position: "relative",
@@ -60,7 +61,7 @@ export default function TreeCard(props) {
                 {title}
             </Typography>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
-                {created_date}
+                {created_date_formatted}
             </Typography>
           </div>
           <Typography variant="body2" style={{marginTop:'2%'}}>
@@ -81,7 +82,7 @@ export default function TreeCard(props) {
                 {title}
             </Typography>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
-                {created_date}
+                {created_date_formatted}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary" style={{marginLeft:'2%', marginTop: 'auto', marginBottom: 'auto'}}>
                 {category}
