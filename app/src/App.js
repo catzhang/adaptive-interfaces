@@ -28,14 +28,14 @@ function App() {
       id: 3, // TODO: field must be unique
       title: "Lorem",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
-      created_date: new Date(2023, 2, 2),
+      created_date: new Date(2023, 2, 3),
       category: "Work"
     },
     {
       id: 4, // TODO: field must be unique
       title: "Ipsum",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
-      created_date: new Date(2023, 2, 1),
+      created_date: new Date(2023, 2, 2),
       category: "Personal"
     },
   ]);

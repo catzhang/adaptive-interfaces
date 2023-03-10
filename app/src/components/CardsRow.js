@@ -1,11 +1,11 @@
 import * as React from 'react';
 import NoteCard from './NoteCard';
-
+import { sortByDescendingTime } from '../utils/utils';
 
 export default function CardsRow(props) {
     const { notes, complexity, category } = props;
 
-    const categoryNotes = notes?.filter(note => note.category === category);
+    const categoryNotes = notes?.filter(note => note.category === category).sort(sortByDescendingTime);
 
     let leftMargin = '2%';
 

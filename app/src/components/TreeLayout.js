@@ -9,6 +9,7 @@ import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import TreeCard from './TreeCard';
 import Button from '@mui/material/Button';
+import { sortByDescendingTime } from '../utils/utils';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -78,8 +79,8 @@ export default function CustomizedAccordions(props) {
     // const selectedNote = notes[0];
     const [selectedNote, setSelectedNote] = React.useState(notes[0]);
 
-    const workNotes = notes?.filter(note => note.category === "Work");
-    const personalNotes = notes?.filter(note => note.category === "Personal");
+    const workNotes = notes?.filter(note => note.category === "Work").sort(sortByDescendingTime);
+    const personalNotes = notes?.filter(note => note.category === "Personal").sort(sortByDescendingTime);
 
     return (
         <div style={layoutStyle}>
