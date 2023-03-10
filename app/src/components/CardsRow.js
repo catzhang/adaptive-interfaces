@@ -3,7 +3,9 @@ import NoteCard from './NoteCard';
 
 
 export default function CardsRow(props) {
-    const { notes, complexity } = props;
+    const { notes, complexity, category } = props;
+
+    const categoryNotes = notes?.filter(note => note.category === category);
 
     let leftMargin = '2%';
 
@@ -15,7 +17,7 @@ export default function CardsRow(props) {
 
     return (
         <div style={{display: 'flex', flexDirection: 'row'}}>
-            {notes?.map((note) => (
+            {categoryNotes.map((note) => (
                 <div key={note.id} style={{marginLeft: leftMargin}}>
                     <NoteCard 
                         note={note}

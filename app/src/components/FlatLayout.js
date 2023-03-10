@@ -29,13 +29,13 @@ export default function FlatLayout(props) {
             <div style={{textAlign: 'left', width: layoutStyle.width, margin: 'auto',}}>
                 <Typography style={{marginBottom: '1%', marginTop: '2%'}}>Work</Typography>
                 <div style={layoutStyle}>
-                    <CardsRow notes={notes} complexity={complexity}/>
+                    <CardsRow notes={notes} complexity={complexity} category="Work"/>
                 </div>
             </div>
             <div style={{textAlign: 'left', width: layoutStyle.width, margin: 'auto', marginBottom: '3%'}}>
                 <Typography style={{marginBottom: '1%', marginTop: '2%'}}>Personal</Typography>
                 <div style={layoutStyle}>
-                    <CardsRow notes={notes} complexity={complexity}/>
+                    <CardsRow notes={notes} complexity={complexity} category="Personal"/>
                 </div>
             </div>
             

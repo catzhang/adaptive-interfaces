@@ -78,7 +78,7 @@ export default function CustomizedAccordions(props) {
                 <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity}/>
+                    <CardsRow notes={notes} complexity={complexity} category="Work"/>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -86,7 +86,7 @@ export default function CustomizedAccordions(props) {
                 <Typography style={{ textTransform: 'uppercase' }}>Personal</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity}/>
+                    <CardsRow notes={notes} complexity={complexity} category="Personal"/>
                 </AccordionDetails>
             </Accordion>
         </div>
