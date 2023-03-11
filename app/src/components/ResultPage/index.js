@@ -5,6 +5,7 @@ import MixedLayout from '../MixedLayout';
 import TreeLayout from '../TreeLayout';
 import NavBar from '../NavBar';
 import { calculateColorBucket, calculateComplexityBucket, calculateHierarchy, calculateGenderBucket } from '../../utils/DemographicCalculations';
+import '../../../src/App.css';
 
 function ResultPage(props) {
   const { state } = useLocation();
@@ -31,8 +32,19 @@ function ResultPage(props) {
     component = <TreeLayout notes={notes} complexity={complexity} color={color} gender={gender}/>;
   }
 
+  let genderBackgroundColor = "inherit";
+  if (complexity === "High" && hierarchy !== "Tree") {
+    if (gender === 'Male') {
+      genderBackgroundColor = "#D9D9D9";
+    } else if (gender === "Nonbinary") {
+      genderBackgroundColor = "#F1F0ED";
+    } else {
+      genderBackgroundColor = "#F5F3F2";
+    }
+  }
+
   return (
-    <div>
+    <div className="ResultPageDiv" style={{backgroundColor: genderBackgroundColor}}>
       <NavBar notes={notes} setNotes={setNotes} complexity={complexity} color={color} gender={gender}/> 
       {component}
     </div>

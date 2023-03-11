@@ -1,11 +1,14 @@
-.App {
-  text-align: center;
+.ResultPageDiv {
   /* this below makes the App div take up the full screen */
   position:absolute;
   top:0px;
   right:0px;
   bottom:0px;
   left:0px;
+}
+
+.App {
+  text-align: center;
 }
 
 .App-logo {
