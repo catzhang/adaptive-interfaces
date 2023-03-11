@@ -112,11 +112,10 @@ export default function CustomizedAccordions(props) {
         layoutStyle.height = 500;
     }
 
-    // const selectedNote = notes[0];
-    const [selectedNote, setSelectedNote] = React.useState(notes[0]);
-
     const workNotes = notes?.filter(note => note.category === "Work").sort(sortByDescendingTime);
     const personalNotes = notes?.filter(note => note.category === "Personal").sort(sortByDescendingTime);
+
+    const [selectedNote, setSelectedNote] = React.useState(workNotes[0]);
 
     if (color === "Medium" || color === "High") {
       return (
@@ -129,7 +128,7 @@ export default function CustomizedAccordions(props) {
                       <AccordionDetails>
                           <div style={{display: 'flex', flexDirection: 'column'}}>
                               {workNotes.map((note, index) => (
-                                  <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                                  <Button size="small" key={index} onClick={() => setSelectedNote(note)}>{note.title}</Button>
                               ))}
                           </div>
                       </AccordionDetails>
@@ -141,7 +140,7 @@ export default function CustomizedAccordions(props) {
                       <AccordionDetails>
                           <div style={{display: 'flex', flexDirection: 'column'}}>
                               {personalNotes.map((note, index) => (
-                                  <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                                  <Button size="small" key={index} onClick={() => setSelectedNote(note)}>{note.title}</Button>
                               ))}
                           </div>
                       </AccordionDetails>
@@ -165,7 +164,7 @@ export default function CustomizedAccordions(props) {
                     <AccordionDetails>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             {workNotes.map((note, index) => (
-                                <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                                <Button size="small" key={index} onClick={() => setSelectedNote(note)}>{note.title}</Button>
                             ))}
                         </div>
                     </AccordionDetails>
@@ -177,7 +176,7 @@ export default function CustomizedAccordions(props) {
                     <AccordionDetails>
                         <div style={{display: 'flex', flexDirection: 'column'}}>
                             {personalNotes.map((note, index) => (
-                                <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                                <Button size="small" key={index} onClick={() => setSelectedNote(note)}>{note.title}</Button>
                             ))}
                         </div>
                     </AccordionDetails>
