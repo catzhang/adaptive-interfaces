@@ -34,7 +34,7 @@ export default function NavBar(props) {
   }
 
   let buttonStyle = {
-    backgroundColor: "none",
+    backgroundColor: "inherit",
     marginRight: "8px",
   }
 

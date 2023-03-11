@@ -93,6 +93,9 @@ export default function NoteCard(props) {
             {content}
           </Typography>
         </CardContent>
+        <Typography sx={{ mb: 0.8, fontSize: "13px" }} color="text.secondary" style={cardCategoryLabel}>
+          {category}
+        </Typography>
         <CardActions style={cardActionsStyle}>
           <Button size="small">Edit</Button>
         </CardActions>
