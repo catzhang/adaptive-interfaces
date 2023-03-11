@@ -42,8 +42,8 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-const workColor = "#FFE55E";
-const personalColor = "#FE7070";
+
+
 
 export default function CustomizedAccordions(props) {
   const [expanded, setExpanded] = React.useState('panel1');
@@ -60,6 +60,17 @@ export default function CustomizedAccordions(props) {
         height: 400, 
         margin: 'auto', 
         marginTop: '5%',
+    }
+
+    let workColor = "#FFE55E";
+    let personalColor = "#FE7070";
+
+    if (gender === 'Female') {
+        personalColor = '#B0C3E1';
+        workColor = '#B4D7E5';
+    } else if (gender === 'Nonbinary') {
+        personalColor = '#E89494';
+        workColor = '#FAE888';
     }
 
     let workLabel = {

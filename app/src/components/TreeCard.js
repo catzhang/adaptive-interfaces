@@ -55,8 +55,16 @@ export default function TreeCard(props) {
     right: '50px'
   }
 
-  const workColor = "#FFE55E";
-  const personalColor = "#FE7070";
+    let workColor = "#FFE55E";
+    let personalColor = "#FE7070";
+
+    if (gender === 'Female') {
+        personalColor = '#B0C3E1';
+        workColor = '#B4D7E5';
+    } else if (gender === 'Nonbinary') {
+        personalColor = '#E89494';
+        workColor = '#FAE888';
+    }
 
   if (color === "Medium" || color === "High") {
     cardCategoryLabelWork.backgroundColor = workColor;
@@ -127,6 +135,9 @@ export default function TreeCard(props) {
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
                   {created_date_formatted}
               </Typography>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
+                {last_edit}
+              </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary" style={cardCategoryLabelWork}>
                   {category}
               </Typography>
@@ -151,13 +162,13 @@ export default function TreeCard(props) {
               <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
                   {created_date_formatted}
               </Typography>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
+                {last_edit}
+              </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary" style={cardCategoryLabelPersonal}>
                   {category}
               </Typography>
-            </div>  
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
-              {last_edit}
-            </Typography>
+            </div>
             <Typography variant="body2" style={{marginTop:'2%'}}>
               {content}
             </Typography>

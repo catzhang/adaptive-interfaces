@@ -51,8 +51,16 @@ export default function CustomizedAccordions(props) {
       },
     }));
 
-    const workColor = "#FFE55E";
-    const personalColor = "#FE7070";
+    let workColor = "#FFE55E";
+    let personalColor = "#FE7070";
+
+    if (gender === 'Female') {
+        personalColor = '#B0C3E1';
+        workColor = '#B4D7E5';
+    } else if (gender === 'Nonbinary') {
+        personalColor = '#E89494';
+        workColor = '#FAE888';
+    }
 
     
       const AccordionSummaryWork = styled((props) => (
