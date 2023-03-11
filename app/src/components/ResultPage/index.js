@@ -11,7 +11,8 @@ function ResultPage(props) {
   const color = calculateColorBucket(state.age, state.country);
   const complexity = calculateComplexityBucket(state.age, state.country);
   console.log(complexity);
-  const hierarchy = calculateHierarchy(state.country);
+  console.log(color);
+  const hierarchy = calculateHierarchy(state.country); 
 
   // UNCOMMENT BELOW LINES, COMMENT ABOVE LINES TO HARD CODE
   // const complexity = "High";
@@ -26,12 +27,12 @@ function ResultPage(props) {
 
   const { notes } = props;
 
-  let component = <FlatLayout notes={notes} complexity={complexity}/>; // flat
+  let component = <FlatLayout notes={notes} complexity={complexity} color={color}/>; // flat
 
   if (hierarchy === "Mixed") {
-    component = <MixedLayout notes={notes} complexity={complexity}/>;
+    component = <MixedLayout notes={notes} complexity={complexity} color={color}/>;
   } else if (hierarchy === "Tree") {
-    component = <TreeLayout notes={notes} complexity={complexity}/>;
+    component = <TreeLayout notes={notes} complexity={complexity} color={color}/>;
   }
 
   return (

@@ -11,6 +11,8 @@ export default function NoteCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, last_edit, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
+  const color = props.color;
+  const colorCode = props.colorCode;
   const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
@@ -20,6 +22,20 @@ export default function NoteCard(props) {
     backgroundColor: "#F0F0F0",
     textAlign: "left",
     height: "300px"
+  }
+
+  let cardCategoryLabel = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: '15px',
+    width: '80px',
+    height: '30px',
+    backgroundColor: '#C8C8C8',
+    borderRadius: '15px',
+    textAlign: 'center',
+    position: "absolute",
+    bottom: "20px"
   }
 
   let cardActionsStyle = {
@@ -37,6 +53,10 @@ export default function NoteCard(props) {
   } else if (complexity === "High") {
     cardStyle.width = "25%";
     cardStyle.height = "370px";
+  }
+
+  if (color === "Medium" || color === "High") {
+    cardCategoryLabel.backgroundColor = colorCode;
   }
   
   if (complexity === "Low") {
@@ -89,16 +109,18 @@ export default function NoteCard(props) {
           <Typography variant="h5" component="div">
             {title}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {category}
-          </Typography>
           <Typography variant="body2">
             {content}
           </Typography>
         </CardContent>
+        
+        <Typography sx={{ mb: 0.8, fontSize: "13px" }} color="text.secondary" style={cardCategoryLabel}>
+          {category}
+        </Typography>
         <CardActions style={cardActionsStyle}>
           <Button size="small">Edit</Button>
         </CardActions>
+        
       </Card>
   );
   }
