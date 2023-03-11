@@ -3,7 +3,7 @@ import NoteCard from './NoteCard';
 import { sortByDescendingTime } from '../utils/utils';
 
 export default function CardsRow(props) {
-    const { notes, complexity, category } = props;
+    const { notes, complexity, category, color, colorCode } = props;
 
     const categoryNotes = notes?.filter(note => note.category === category).sort(sortByDescendingTime);
 
@@ -22,6 +22,8 @@ export default function CardsRow(props) {
                     <NoteCard 
                         note={note}
                         complexity={complexity}
+                        color = {color}
+                        colorCode = {colorCode}
                         // editNote={editNote} // TODO - add edit function later
                     />
                 </div>

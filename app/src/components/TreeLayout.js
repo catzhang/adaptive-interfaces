@@ -11,41 +11,7 @@ import TreeCard from './TreeCard';
 import Button from '@mui/material/Button';
 import { sortByDescendingTime } from '../utils/utils';
 
-const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
-))(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  '&:not(:last-child)': {
-    borderBottom: 0,
-  },
-  '&:before': {
-    display: 'none',
-  },
-}));
 
-const AccordionSummary = styled((props) => (
-  <MuiAccordionSummary
-    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-    {...props}
-  />
-))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
-  },
-  '& .MuiAccordionSummary-content': {
-    marginLeft: theme.spacing(1),
-  },
-}));
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
-}));
 
 export default function CustomizedAccordions(props) {
   const [expanded, setExpanded] = React.useState('panel1');
@@ -55,7 +21,77 @@ export default function CustomizedAccordions(props) {
       setExpanded(newExpanded ? panel : false);
     };
 
-    const {notes, complexity} = props;
+    const {notes, complexity, color} = props;
+
+    const Accordion = styled((props) => (
+      <MuiAccordion disableGutters elevation={0} square {...props} />
+    ))(({ theme }) => ({
+      border: `1px solid ${theme.palette.divider}`,
+      '&:not(:last-child)': {
+        borderBottom: 0,
+      },
+      '&:before': {
+        display: 'none',
+      },
+    }));
+    
+    let AccordionSummary = styled((props) => (
+      <MuiAccordionSummary
+        expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+        {...props}
+      />
+    ))(({ theme }) => ({
+      backgroundColor: 'lightgray',
+      flexDirection: 'row-reverse',
+      '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+        transform: 'rotate(90deg)',
+      },
+      '& .MuiAccordionSummary-content': {
+        marginLeft: theme.spacing(1),
+      },
+    }));
+
+    const workColor = "#FFE55E";
+    const personalColor = "#FE7070";
+
+    
+      const AccordionSummaryWork = styled((props) => (
+        <MuiAccordionSummary
+          expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+          {...props}
+        />
+      ))(({ theme }) => ({
+        backgroundColor: workColor,
+        flexDirection: 'row-reverse',
+        '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+          transform: 'rotate(90deg)',
+        },
+        '& .MuiAccordionSummary-content': {
+          marginLeft: theme.spacing(1),
+        },
+      }));
+
+      const AccordionSummaryPersonal = styled((props) => (
+        <MuiAccordionSummary
+          expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+          {...props}
+        />
+      ))(({ theme }) => ({
+        backgroundColor: personalColor,
+        flexDirection: 'row-reverse',
+        '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+          transform: 'rotate(90deg)',
+        },
+        '& .MuiAccordionSummary-content': {
+          marginLeft: theme.spacing(1),
+        },
+      }));
+    
+    
+    const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+      padding: theme.spacing(2),
+      borderTop: '1px solid rgba(0, 0, 0, .125)',
+    }));
 
     let layoutStyle = {
         width: 1160, 
@@ -82,7 +118,43 @@ export default function CustomizedAccordions(props) {
     const workNotes = notes?.filter(note => note.category === "Work").sort(sortByDescendingTime);
     const personalNotes = notes?.filter(note => note.category === "Personal").sort(sortByDescendingTime);
 
-    return (
+    if (color === "Medium" || color === "High") {
+      return (
+          <div style={layoutStyle}>
+              <div style={{width: 200}}>
+                  <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                      <AccordionSummaryWork aria-controls="panel1d-content" id="panel1d-header">
+                      <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
+                      </AccordionSummaryWork>
+                      <AccordionDetails>
+                          <div style={{display: 'flex', flexDirection: 'column'}}>
+                              {workNotes.map((note, index) => (
+                                  <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                              ))}
+                          </div>
+                      </AccordionDetails>
+                  </Accordion>
+                  <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                      <AccordionSummaryPersonal aria-controls="panel2d-content" id="panel2d-header">
+                      <Typography style={{ textTransform: 'uppercase' }}>Personal</Typography>
+                      </AccordionSummaryPersonal>
+                      <AccordionDetails>
+                          <div style={{display: 'flex', flexDirection: 'column'}}>
+                              {personalNotes.map((note, index) => (
+                                  <Button size="small" key={index} onClick={() => setSelectedNote(notes[index])}>{note.title}</Button>
+                              ))}
+                          </div>
+                      </AccordionDetails>
+                  </Accordion>
+              </div>
+              <TreeCard key={selectedNote.id} 
+                          note={selectedNote}
+                          complexity={complexity}
+                          color={color}/>
+          </div>
+      );
+    } else {
+      return (
         <div style={layoutStyle}>
             <div style={{width: 200}}>
                 <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -112,7 +184,9 @@ export default function CustomizedAccordions(props) {
             </div>
             <TreeCard key={selectedNote.id} 
                         note={selectedNote}
-                        complexity={complexity}/>
+                        complexity={complexity}
+                        color={color}/>
         </div>
     );
+    }
 }

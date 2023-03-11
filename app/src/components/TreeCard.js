@@ -10,6 +10,7 @@ export default function TreeCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
+  const color = props.color;
   const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
@@ -19,6 +20,42 @@ export default function TreeCard(props) {
     backgroundColor: "#F0F0F0",
     textAlign: "left",
     height: 700
+  }
+
+  let cardCategoryLabelWork = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: '15px',
+    width: '80px',
+    height: '30px',
+    backgroundColor: '#C8C8C8',
+    borderRadius: '15px',
+    textAlign: 'center',
+    position: 'absolute',
+    right: '50px'
+  }
+
+  let cardCategoryLabelPersonal = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: '15px',
+    width: '80px',
+    height: '30px',
+    backgroundColor: '#C8C8C8',
+    borderRadius: '15px',
+    textAlign: 'center',
+    position: 'absolute',
+    right: '50px'
+  }
+
+  const workColor = "#FFE55E";
+  const personalColor = "#FE7070";
+
+  if (color === "Medium" || color === "High") {
+    cardCategoryLabelWork.backgroundColor = workColor;
+    cardCategoryLabelPersonal.backgroundColor = personalColor
   }
 
   let cardActionsStyle = {
@@ -32,7 +69,7 @@ export default function TreeCard(props) {
   } else if (complexity === "Medium") {
     cardStyle.width = 860;
   } else if (complexity === "High") {
-    cardStyle.width = 1300;
+    cardStyle.width = 1100;
     cardStyle.marginLeft = '2%';
   }
   
@@ -74,28 +111,55 @@ export default function TreeCard(props) {
       </Card>
     );
   } else {
-    return (
-      <Card sx={{ minWidth: 250 }} style={cardStyle}>
-        <CardContent>
-          <div style={{display: 'flex', flexDirection: 'row'}}>
-            <Typography variant="h5" component="div">
-                {title}
+    if (category === "Work") {
+      return (
+        <Card sx={{ minWidth: 250 }} style={cardStyle}>
+          <CardContent>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <Typography variant="h5" component="div">
+                  {title}
+              </Typography>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
+                  {created_date_formatted}
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary" style={cardCategoryLabelWork}>
+                  {category}
+              </Typography>
+            </div>  
+            <Typography variant="body2" style={{marginTop:'2%'}}>
+              {content}
             </Typography>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
-                {created_date_formatted}
+          </CardContent>
+          <CardActions style={cardActionsStyle}>
+            <Button size="small">Edit</Button>
+          </CardActions>
+        </Card>
+      )
+    } else if (category === "Personal") {
+      return (
+        <Card sx={{ minWidth: 250 }} style={cardStyle}>
+          <CardContent>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
+              <Typography variant="h5" component="div">
+                  {title}
+              </Typography>
+              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
+                  {created_date_formatted}
+              </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary" style={cardCategoryLabelPersonal}>
+                  {category}
+              </Typography>
+            </div>  
+            <Typography variant="body2" style={{marginTop:'2%'}}>
+              {content}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary" style={{marginLeft:'2%', marginTop: 'auto', marginBottom: 'auto'}}>
-                {category}
-            </Typography>
-          </div>  
-          <Typography variant="body2" style={{marginTop:'2%'}}>
-            {content}
-          </Typography>
-        </CardContent>
-        <CardActions style={cardActionsStyle}>
-          <Button size="small">Edit</Button>
-        </CardActions>
-      </Card>
-  );
+          </CardContent>
+          <CardActions style={cardActionsStyle}>
+            <Button size="small">Edit</Button>
+          </CardActions>
+        </Card>
+      )
+    }
+    
   }
 }

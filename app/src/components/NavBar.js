@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import icon from './../Add_ring_light.png';
 
 export default function NavBar(props) {
   const { notes, setNotes } = props;
@@ -53,7 +54,7 @@ export default function NavBar(props) {
             <Typography variant="h6">
               NOTES
             </Typography>
-            <Button onClick={handleOpen} color="inherit">New Note</Button>
+            <Button onClick={handleOpen} color="inherit"><img src={icon} />New Note</Button>
           </Toolbar>
         </AppBar>
       </Box>

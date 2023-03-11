@@ -27,10 +27,7 @@ const AccordionSummary = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark'
-      ? 'rgba(255, 255, 255, .05)'
-      : 'rgba(0, 0, 0, .03)',
+  backgroundColor: "rgba(225, 225, 225, 0.5)",
   flexDirection: 'row-reverse',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
@@ -45,6 +42,9 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
+const workColor = "#FFE55E";
+const personalColor = "#FE7070";
+
 export default function CustomizedAccordions(props) {
   const [expanded, setExpanded] = React.useState('panel1');
 
@@ -53,14 +53,40 @@ export default function CustomizedAccordions(props) {
       setExpanded(newExpanded ? panel : false);
     };
 
-    const notes = props.notes;
-    const complexity = props.complexity;
+  const notes = props.notes;
+  const complexity = props.complexity;
+  const color = props.color;
+
 
     let layoutStyle = {
         width: 1160, 
         height: 400, 
         margin: 'auto', 
         marginTop: '5%',
+    }
+
+    let workLabel = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: '15px',
+      width: '90px',
+      height: '35px',
+      backgroundColor: workColor,
+      borderRadius: '15px',
+      textAlign: 'center',
+    }
+
+    let personalLabel = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft: '15px',
+      width: '130px',
+      height: '35px',
+      backgroundColor: personalColor,
+      borderRadius: '15px',
+      textAlign: 'center',
     }
 
     if (complexity === "Medium") {
@@ -71,14 +97,15 @@ export default function CustomizedAccordions(props) {
         layoutStyle.height = 500;
     }
 
-    return (
+    if (color == "Low") {
+      return (
         <div style={layoutStyle}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
+                <Typography style={{ textTransform: 'uppercase' }}><span style={{backgroundColor: 'pink'}}>Work</span></Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity} category="Work"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -86,9 +113,35 @@ export default function CustomizedAccordions(props) {
                 <Typography style={{ textTransform: 'uppercase' }}>Personal</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity} category="Personal"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal"/>
                 </AccordionDetails>
             </Accordion>
         </div>
     );
+    } else {
+      return (
+          <div style={layoutStyle}>
+              <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                  <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+                  <div style={workLabel}>
+                    <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
+                  </div>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>
+                  </AccordionDetails>
+              </Accordion>
+              <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                  <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+                  <div style={personalLabel}>
+                  <Typography style={{ textTransform: 'uppercase' }}>Personal</Typography>
+                  </div>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal"/>
+                  </AccordionDetails>
+              </Accordion>
+          </div>
+      );
+    }
 }
