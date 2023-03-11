@@ -33,7 +33,7 @@ function ResultPage(props) {
   }
 
   let genderBackgroundColor = "inherit";
-  if (complexity === "High" && hierarchy !== "Tree") {
+  if (color === "High" && hierarchy !== "Tree") {
     if (gender === 'Male') {
       genderBackgroundColor = "#D9D9D9";
     } else if (gender === "Nonbinary") {
@@ -42,6 +42,7 @@ function ResultPage(props) {
       genderBackgroundColor = "#F5F3F2";
     }
   }
+  console.log(genderBackgroundColor);
 
   return (
     <div className="ResultPageDiv" style={{backgroundColor: genderBackgroundColor}}>
