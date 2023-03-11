@@ -42,6 +42,16 @@ export const calculateColorBucket = (age, countryIndex) => {
     }
 }
 
+export const calculateGenderBucket = (gender) => {
+    if (gender < 34) {
+        return "Female";
+    } else if (gender < 67) {
+        return "Nonbinary";
+    } else {
+        return "Male";
+    }
+}
+
 export const calculateAgeComplexityBucket = (age) => {
     if (age <= 40) {
         return BUCKETS.MEDIUM;

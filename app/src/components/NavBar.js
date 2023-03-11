@@ -10,16 +10,44 @@ import { formatDate } from '../utils/utils';
 import icon from './../Add_ring_light.png';
 
 export default function NavBar(props) {
-  const { notes, setNotes, complexity } = props;
-  const { state } = useLocation();
-  const gender = state?.gender;
+  const { notes, setNotes, complexity, color, gender } = props;
+  console.log(complexity, color, gender);
 
-  const barStyle = {
+  let barStyle = {
     display: "flex",
     color: "black",
-    backgroundColor: "white",
+    backgroundColor: "#D4D4D4",
     justifyContent: "space-between"
   }
+  
+  let barTextColor = 'black';
+
+  if (color === 'High') {
+    if (gender === 'Male') { 
+      barStyle.backgroundColor = '#3F50B5';
+      barTextColor = 'white';
+    } else if (gender === 'Nonbinary') {
+      barStyle.backgroundColor = '#638CC9';
+    } else {
+      barStyle.backgroundColor = '#ACC4E8';
+    }
+  }
+
+  let buttonStyle = {
+    backgroundColor: "none",
+    marginRight: "8px",
+  }
+
+  if (color === 'High') {
+    if (gender === 'Male') { 
+      buttonStyle.backgroundColor = '#10B210';
+    } else if (gender === 'Nonbinary') {
+      buttonStyle.backgroundColor = '#78C16C';
+    } else {
+      buttonStyle.backgroundColor = '#B7D8B2';
+    }
+  }
+  
 
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = React.useState('');
@@ -67,9 +95,9 @@ export default function NavBar(props) {
     p: 4,
   };
 
-  if (gender > (2/3) * 100) { // male
+  if (gender === 'Male') {
     style.backgroundColor = '#F0F0F0';
-  } else if (gender > 100/3) { // nonbinary
+  } else if (gender === 'Nonbinary') {
     style.backgroundColor = '#F1F0ED';
   }
 
@@ -79,10 +107,10 @@ export default function NavBar(props) {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar style={barStyle}>
-              <Typography variant="h6">
+              <Typography variant="h6" style={{color: barTextColor}}>
                 NOTES
               </Typography>
-              <Button onClick={handleOpen} color="inherit"><img src={icon} />New Note</Button>
+              <Button onClick={handleOpen} color="inherit" style={{color: barTextColor}}><img src={icon} style={buttonStyle}/>New Note</Button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -134,10 +162,10 @@ export default function NavBar(props) {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar style={barStyle}>
-              <Typography variant="h6">
+              <Typography variant="h6" style={{color: barTextColor}}>
                 NOTES
               </Typography>
-              <Button onClick={handleOpen} color="inherit"><img src={icon} />New Note</Button>
+              <Button onClick={handleOpen} color="inherit" style={{color: barTextColor}}><img src={icon} style={buttonStyle}/>New Note</Button>
             </Toolbar>
           </AppBar>
         </Box>
@@ -192,10 +220,10 @@ export default function NavBar(props) {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
             <Toolbar style={barStyle}>
-              <Typography variant="h6">
+              <Typography variant="h6" style={{color: barTextColor}}>
                 NOTES
               </Typography>
-              <Button onClick={handleOpen} color="inherit"><img src={icon} />New Note</Button>
+              <Button onClick={handleOpen} color="inherit" style={{color: barTextColor}}><img src={icon} style={buttonStyle}/>New Note</Button>
             </Toolbar>
           </AppBar>
         </Box>
