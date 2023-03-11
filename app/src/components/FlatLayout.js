@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import CardsRow from './CardsRow';
 
 export default function FlatLayout(props) {
-    const { notes, complexity, color } = props;
+    const { notes, complexity, color, gender } = props;
 
     let layoutStyle = {
         backgroundColor: 'white', 
@@ -64,7 +64,7 @@ export default function FlatLayout(props) {
                     <Typography>Work</Typography>
                 </div>
                 <div style={layoutStyle}>
-                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work" gender={gender}/>
                 </div>
             </div>
             <div style={{textAlign: 'left', width: layoutStyle.width, margin: 'auto', marginBottom: '3%'}}>
@@ -72,7 +72,7 @@ export default function FlatLayout(props) {
                     <Typography>Personal</Typography>
                 </div>
                 <div style={layoutStyle}>
-                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal" gender={gender}/>
                 </div>
             </div>
             

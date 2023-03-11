@@ -3,9 +3,10 @@ import NoteCard from './NoteCard';
 import { sortByDescendingTime } from '../utils/utils';
 
 export default function CardsRow(props) {
-    const { notes, complexity, category, color, colorCode } = props;
+    const { notes, complexity, category, color, colorCode, gender } = props;
 
     const categoryNotes = notes?.filter(note => note.category === category).sort(sortByDescendingTime);
+    console.log(gender);
 
     let leftMargin = '2%';
 
@@ -24,6 +25,7 @@ export default function CardsRow(props) {
                         complexity={complexity}
                         color = {color}
                         colorCode = {colorCode}
+                        gender={gender}
                         // editNote={editNote} // TODO - add edit function later
                     />
                 </div>

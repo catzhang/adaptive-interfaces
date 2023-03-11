@@ -21,7 +21,7 @@ export default function CustomizedAccordions(props) {
       setExpanded(newExpanded ? panel : false);
     };
 
-    const {notes, complexity, color} = props;
+    const { notes, complexity, color, gender } = props;
 
     const Accordion = styled((props) => (
       <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -150,7 +150,8 @@ export default function CustomizedAccordions(props) {
               <TreeCard key={selectedNote.id} 
                           note={selectedNote}
                           complexity={complexity}
-                          color={color}/>
+                          color={color}
+                          gender={gender}/>
           </div>
       );
     } else {
@@ -185,7 +186,8 @@ export default function CustomizedAccordions(props) {
             <TreeCard key={selectedNote.id} 
                         note={selectedNote}
                         complexity={complexity}
-                        color={color}/>
+                        color={color}
+                        gender={gender}/>
         </div>
     );
     }

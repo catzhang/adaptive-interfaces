@@ -53,10 +53,7 @@ export default function CustomizedAccordions(props) {
       setExpanded(newExpanded ? panel : false);
     };
 
-  const notes = props.notes;
-  const complexity = props.complexity;
-  const color = props.color;
-
+  const {notes, complexity, color, gender} = props;
 
     let layoutStyle = {
         width: 1160, 
@@ -105,7 +102,7 @@ export default function CustomizedAccordions(props) {
                 <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work" gender={gender}/>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -113,7 +110,7 @@ export default function CustomizedAccordions(props) {
                 <Typography style={{ textTransform: 'uppercase' }}>Personal</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal"/>
+                    <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal" gender={gender}/>
                 </AccordionDetails>
             </Accordion>
         </div>
@@ -128,7 +125,7 @@ export default function CustomizedAccordions(props) {
                   </div>
                   </AccordionSummary>
                   <AccordionDetails>
-                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>
+                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work" gender={gender}/>
                   </AccordionDetails>
               </Accordion>
               <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -138,7 +135,7 @@ export default function CustomizedAccordions(props) {
                   </div>
                   </AccordionSummary>
                   <AccordionDetails>
-                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal"/>
+                      <CardsRow notes={notes} complexity={complexity} color={color} colorCode={personalColor} category="Personal" gender={gender}/>
                   </AccordionDetails>
               </Accordion>
           </div>

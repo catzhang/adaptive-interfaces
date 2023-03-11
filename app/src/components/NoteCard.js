@@ -10,18 +10,22 @@ import { formatDate } from '../utils/utils';
 export default function NoteCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, last_edit, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
-  const complexity = props.complexity;
-  const color = props.color;
-  const colorCode = props.colorCode;
+  const { complexity, color, colorCode, gender } = props;
   const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
     position: "relative",
     margin: "20px 0px",
     width: "20%",
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "#F1EEEC",
     textAlign: "left",
     height: "300px"
+  }
+
+  if (gender === 'Male') {
+    cardStyle.backgroundColor = '#F0F0F0';
+  } else if (gender === 'Nonbinary') {
+    cardStyle.backgroundColor = '#F1F0ED';
   }
 
   let cardCategoryLabel = {

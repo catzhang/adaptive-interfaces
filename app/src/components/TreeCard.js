@@ -9,17 +9,22 @@ import { formatDate } from '../utils/utils';
 export default function TreeCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
   const { title, content, created_date, last_edit, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
-  const complexity = props.complexity;
-  const color = props.color;
+  const { complexity, color, gender } = props;
   const created_date_formatted = formatDate(created_date);
 
   let cardStyle = {
     position: "relative",
     marginLeft: '5%',
     width: "20%",
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "#F1EEEC",
     textAlign: "left",
     height: 700
+  }
+
+  if (gender === 'Male') {
+    cardStyle.backgroundColor = '#F0F0F0';
+  } else if (gender === 'Nonbinary') {
+    cardStyle.backgroundColor = '#F1F0ED';
   }
 
   let cardCategoryLabelWork = {
