@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from './components/NavBar';
 import DemographicForm from './components/DemographicForm';
 import ResultPage from './components/ResultPage';
 
@@ -43,19 +42,15 @@ function App() {
       category: "Personal"
     },
   ]);
-  const [complexity, setComplexity] = React.useState('');
-  const [hierarchy, setHierarchy] = React.useState('');
 
   // --------------- END -------------------------------------------------------------------------------------
 
   return (
     <div className="App">
       <Router>
-        <NavBar notes={notes} setNotes={setNotes} complexity={complexity}/> 
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
-          <Route exact path="/result" element={<ResultPage notes={notes} complexity={complexity} hierarchy={hierarchy} 
-            setComplexity={setComplexity} setHierarchy={setHierarchy}/>} />
+          <Route exact path="/result" element={<ResultPage notes={notes} setNotes={setNotes}/>} />
         </Routes>
       </Router>
     </div>
