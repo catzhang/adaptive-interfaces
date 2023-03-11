@@ -43,20 +43,19 @@ function App() {
       category: "Personal"
     },
   ]);
-
-  const Complexity = "High"; // TEMP
-  const Hierarchy = "Tree"; // TEMP
+  const [complexity, setComplexity] = React.useState('');
+  const [hierarchy, setHierarchy] = React.useState('');
 
   // --------------- END -------------------------------------------------------------------------------------
 
   return (
     <div className="App">
-      {/* BELOW: can remove complexity= and hierarchy= if no longer need to hard code */}
-      <NavBar notes={notes} setNotes={setNotes} complexity={Complexity} hierarchy={Hierarchy}/> 
       <Router>
+        <NavBar notes={notes} setNotes={setNotes} complexity={complexity}/> 
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
-          <Route exact path="/result" element={<ResultPage notes={notes} complexity={Complexity} hierarchy={Hierarchy}/>} />
+          <Route exact path="/result" element={<ResultPage notes={notes} complexity={complexity} hierarchy={hierarchy} 
+            setComplexity={setComplexity} setHierarchy={setHierarchy}/>} />
         </Routes>
       </Router>
     </div>

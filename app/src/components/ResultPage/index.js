@@ -11,13 +11,20 @@ function ResultPage(props) {
   const color = calculateColorBucket(state.age, state.country);
   const complexity = calculateComplexityBucket(state.age, state.country);
   console.log(complexity);
-  const hierarchy = calculateHierarchy(state.country); 
+  const hierarchy = calculateHierarchy(state.country);
 
-  // UNCOMMENT THESE LINES, COMMENT ABOVE LINES TO HARD CODE (IN App.js)
-  // const { hierarchy, complexity } = props;
-  // console.log(hierarchy, complexity);
+  // UNCOMMENT BELOW LINES, COMMENT ABOVE LINES TO HARD CODE
+  // const complexity = "High";
+  // const hierarchy = "Mixed";
 
-  const {notes} = props;
+  const { setComplexity, setHierarchy } = props;
+
+  React.useEffect(() => {
+    setComplexity(complexity);
+    setHierarchy(hierarchy);
+  }, []);
+
+  const { notes } = props;
 
   let component = <FlatLayout notes={notes} complexity={complexity}/>; // flat
 
