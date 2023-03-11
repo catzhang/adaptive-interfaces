@@ -52,7 +52,7 @@ export default function NavBar(props) {
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = React.useState('');
   const [content, setContent] = React.useState('');
-  const [category, setCategory] = React.useState('');
+  const [category, setCategory] = React.useState('Work');
   const [last_edit, setLastEdit] = React.useState('');
 
   const handleOpen = () => setOpen(true);
@@ -78,9 +78,10 @@ export default function NavBar(props) {
     const last_edit = timeNow(created_date);
     let note = { id : notes.length + 1, title, content, created_date, last_edit, category };
     let copy = [...notes, note];
-    console.log(copy);
-
+    
     setNotes(copy);
+    console.log(notes);
+    handleClose();
   }
 
   let style = {
