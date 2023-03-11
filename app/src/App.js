@@ -11,15 +11,15 @@ function App() {
   const [notes, setNotes] = React.useState([
     {
       id: 0, // TODO: field must be unique
-      title: "Personal 3/1/2023",
+      title: "Groceries",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 1),
-      last_edit: '01:49 AM',
+      last_edit: '01:49 PM',
       category: "Personal"
     },
     {
       id: 1, // TODO: field must be unique
-      title: "Work 3/2/2023",
+      title: "Meetings",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 2),
       last_edit: '11:31 AM',
@@ -27,7 +27,7 @@ function App() {
     },
     {
       id: 2, // TODO: field must be unique
-      title: "Personal 3/2/2023",
+      title: "Goals",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 2),
       last_edit: '11:10 PM',
@@ -35,7 +35,7 @@ function App() {
     },
     {
       id: 3, // TODO: field must be unique
-      title: "Work 3/3/2023",
+      title: "Projects",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 3),
       last_edit: '12:57 AM',
