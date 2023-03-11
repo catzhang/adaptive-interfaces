@@ -3,40 +3,39 @@ import { useLocation } from 'react-router-dom';
 import FlatLayout from '../FlatLayout';
 import MixedLayout from '../MixedLayout';
 import TreeLayout from '../TreeLayout';
-import { calculateColorBucket, calculateComplexityBucket, calculateHierarchy } from '../../utils/DemographicCalculations';
+import NavBar from '../NavBar';
+import { calculateColorBucket, calculateComplexityBucket, calculateHierarchy, calculateGenderBucket } from '../../utils/DemographicCalculations';
 
 function ResultPage(props) {
   const { state } = useLocation();
   console.log(state);
   const color = calculateColorBucket(state.age, state.country);
   const complexity = calculateComplexityBucket(state.age, state.country);
-  console.log(complexity);
-  console.log(color);
   const hierarchy = calculateHierarchy(state.country); 
+  const gender = calculateGenderBucket(state.gender);
+  console.log(complexity, hierarchy, gender);
 
   // UNCOMMENT BELOW LINES, COMMENT ABOVE LINES TO HARD CODE
-  // const complexity = "High";
-  // const hierarchy = "Mixed";
+  // const complexity = "Medium";
+  // const hierarchy = "Tree";
+  // const color = "High";
+  // const gender = "Female";
 
-  const { setComplexity, setHierarchy } = props;
+  const { notes, setNotes } = props;
 
-  React.useEffect(() => {
-    setComplexity(complexity);
-    setHierarchy(hierarchy);
-  }, []);
-
-  const { notes } = props;
-
-  let component = <FlatLayout notes={notes} complexity={complexity} color={color}/>; // flat
+  let component = <FlatLayout notes={notes} complexity={complexity} color={color} gender={gender}/>; // flat
 
   if (hierarchy === "Mixed") {
-    component = <MixedLayout notes={notes} complexity={complexity} color={color}/>;
+    component = <MixedLayout notes={notes} complexity={complexity} color={color} gender={gender}/>;
   } else if (hierarchy === "Tree") {
-    component = <TreeLayout notes={notes} complexity={complexity} color={color}/>;
+    component = <TreeLayout notes={notes} complexity={complexity} color={color} gender={gender}/>;
   }
 
   return (
-    component
+    <div>
+      <NavBar notes={notes} setNotes={setNotes} complexity={complexity} color={color} gender={gender}/> 
+      {component}
+    </div>
   );
 }
 
