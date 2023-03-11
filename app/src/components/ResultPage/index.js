@@ -12,6 +12,11 @@ function ResultPage(props) {
   const complexity = calculateComplexityBucket(state.age, state.country);
   console.log(complexity);
   const hierarchy = calculateHierarchy(state.country); 
+
+  // UNCOMMENT THESE LINES, COMMENT ABOVE LINES TO HARD CODE (IN App.js)
+  // const { hierarchy, complexity } = props;
+  // console.log(hierarchy, complexity);
+
   const {notes} = props;
 
   let component = <FlatLayout notes={notes} complexity={complexity}/>; // flat

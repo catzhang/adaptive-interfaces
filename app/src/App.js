@@ -15,6 +15,7 @@ function App() {
         title: "Lorem",
         content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
         created_date: new Date(2023, 2, 2),
+        last_edit: '11:31 AM',
         category: "Work"
     },
     {
@@ -22,6 +23,7 @@ function App() {
       title: "Ipsum",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 1),
+      last_edit: '01:49 AM',
       category: "Personal"
     },
     {
@@ -29,6 +31,7 @@ function App() {
       title: "Lorem",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 3),
+      last_edit: '12:57 AM',
       category: "Work"
     },
     {
@@ -36,6 +39,7 @@ function App() {
       title: "Ipsum",
       content: "Lorem ipsum dolor sit amet. Et ipsum adipisci ab totam tenetur sit reprehenderit fuga qui harum nesciunt",
       created_date: new Date(2023, 2, 2),
+      last_edit: '11:10 PM',
       category: "Personal"
     },
   ]);
@@ -47,7 +51,8 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar notes={notes} setNotes={setNotes} />
+      {/* BELOW: can remove complexity= and hierarchy= if no longer need to hard code */}
+      <NavBar notes={notes} setNotes={setNotes} complexity={Complexity} hierarchy={Hierarchy}/> 
       <Router>
         <Routes>
           <Route exact path="/" element={<DemographicForm />} />
