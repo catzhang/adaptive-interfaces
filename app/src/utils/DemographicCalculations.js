@@ -32,7 +32,7 @@ const calculateCountryColorBucket = (countryIndex) => {
 export const calculateColorBucket = (age, countryIndex) => {
     const ageBucket = calculateAgeColorBucket(age);
     const countryBucket = calculateCountryColorBucket(countryIndex);
-    const score = Math.floor(0.5 * ageBucket + 0.5 * countryBucket);
+    const score = Math.ceil(0.5 * ageBucket + 0.5 * countryBucket);
     if (score === 1) {
         return "Low";
     } else if (score === 2) {

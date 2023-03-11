@@ -17,10 +17,10 @@ function ResultPage(props) {
   console.log(complexity, hierarchy, gender);
 
   // UNCOMMENT BELOW LINES, COMMENT ABOVE LINES TO HARD CODE
-  // const complexity = "Medium";
+  // const complexity = "High";
   // const hierarchy = "Tree";
-  // const color = "High";
-  // const gender = "Female";
+  // const color = "Low";
+  // const gender = "Nonbinary";
 
   const { notes, setNotes } = props;
 
