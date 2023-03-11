@@ -9,7 +9,7 @@ import { formatDate } from '../utils/utils';
 
 export default function NoteCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
-  const { title, content, created_date, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
+  const { title, content, created_date, last_edit, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
   const color = props.color;
   const colorCode = props.colorCode;
@@ -98,9 +98,14 @@ export default function NoteCard(props) {
     return (
       <Card sx={{ minWidth: 250 }} style={cardStyle}>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            {created_date_formatted}
-          </Typography>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              {created_date_formatted}
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+              {last_edit}
+            </Typography>
+          </div>
           <Typography variant="h5" component="div">
             {title}
           </Typography>

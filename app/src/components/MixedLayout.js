@@ -102,7 +102,7 @@ export default function CustomizedAccordions(props) {
         <div style={layoutStyle}>
             <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-                <Typography style={{ textTransform: 'uppercase' }}><span style={{backgroundColor: 'pink'}}>Work</span></Typography>
+                <Typography style={{ textTransform: 'uppercase' }}>Work</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <CardsRow notes={notes} complexity={complexity} color={color} colorCode={workColor} category="Work"/>

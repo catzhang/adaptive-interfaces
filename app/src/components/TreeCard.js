@@ -8,7 +8,7 @@ import { formatDate } from '../utils/utils';
 
 export default function TreeCard(props) {
   // don't need ID now - ID will be needed when we create list of cards with map function
-  const { title, content, created_date, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
+  const { title, content, created_date, last_edit, category } = props.note; // when rendering each card in map function, include the prop `note={note}`
   const complexity = props.complexity;
   const color = props.color;
   const created_date_formatted = formatDate(created_date);
@@ -150,6 +150,9 @@ export default function TreeCard(props) {
                   {category}
               </Typography>
             </div>  
+            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom style={{marginLeft:'2%', marginTop: 'auto'}}>
+              {last_edit}
+            </Typography>
             <Typography variant="body2" style={{marginTop:'2%'}}>
               {content}
             </Typography>

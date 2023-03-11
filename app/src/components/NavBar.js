@@ -8,7 +8,7 @@ import Modal from '@mui/material/Modal';
 import icon from './../Add_ring_light.png';
 
 export default function NavBar(props) {
-  const { notes, setNotes } = props;
+  const { notes, setNotes, complexity } = props;
 
   const barStyle = {
     display: "flex",
@@ -27,7 +27,18 @@ export default function NavBar(props) {
 
   const handleSubmit = () => {
     const created_date = new Date();
-    let note = { id : notes.length + 1, title, content, created_date, category };
+    const hr = created_date.getHours();
+    const min = created_date.getMinutes();
+    const am_pm = 'AM'
+    if (hr > 12) {
+      hr = hr - 12;
+      am_pm = 'PM'
+    }
+    const last_edit = hr + ':' + min + am_pm;
+    if (min < 10) {
+      last_edit = hr + ':' + '0' + min + am_pm;
+    }
+    let note = { id : notes.length + 1, title, content, created_date, last_edit, category };
     let copy = [...notes, note];
     console.log(copy);
 
